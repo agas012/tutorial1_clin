@@ -25,7 +25,7 @@ weight <- sapply(gender, function(x) {
   if(x == 0) {
     return(rnorm(1, mean=250, sd=40))
   } else {
-    return(rnorm(1, mean=230, sd=35))
+    return(rnorm(1, mean=200, sd=35))
   }
 })
 
@@ -81,12 +81,6 @@ plot <- plot_ly(data = population_data, x = ~weight, y = ~height, color = ~facto
                 marker = list(size = 6, opacity = 0.7),
                 hovertemplate = paste("Weight: %{x}<br>Height: %{y}<br>Gender: %{marker.color}<extra></extra>")
 )
-plot
-
-ploth <- plot_ly(data = population_data, x = ~weight, color = ~factor(gender),
-                 colors = c("#1F77B4", "#FF7F0E"), type = "histogram")
-ploth
-
 # Add axis titles and plot title
 plot <- plot %>% layout(title = "Height vs Weight by Gender",
                         xaxis = list(title = "Weight"),
@@ -94,6 +88,10 @@ plot <- plot %>% layout(title = "Height vs Weight by Gender",
 
 # Display the plot
 plot
+
+ploth <- plot_ly(data = population_data, x = ~weight, color = ~factor(gender),
+                 colors = c("#1F77B4", "#FF7F0E"), type = "histogram")
+ploth
 
 
 # Split data into groups with and without disease
